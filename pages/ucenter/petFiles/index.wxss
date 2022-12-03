@@ -1,0 +1,48 @@
+page {
+  background: #f8f8f8;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  background: #f8f8f8;
+  min-height: 100%;
+}
+.pet-files-wrap{
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 40rpx;
+}
+.pet-files-item{
+  display: flex;
+  width: calc(100% - 40rpx);
+  height: auto;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+.item-left{
+  width: 30%;
+  height: auto;
+}
+.item-right{
+  width: 70%;
+  height: auto;
+  color: #9E9E9E;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.submit-btn{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  bottom: 60rpx;
+}
+.submit-btn .btn{
+  width: 80%;
+}

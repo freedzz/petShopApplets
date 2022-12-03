@@ -18,6 +18,8 @@
     "pages/ucenter/order-details/index",
     "pages/ucenter/express-info/index",
     "pages/ucenter/footprint/index",
+    "pages/ucenter/petFiles/index",
+    "pages/ucenter/petFilesDetail/index",
     "pages/payResult/payResult",
     "pages/payOffline/index"
   ],
@@ -59,5 +61,13 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  }
 }

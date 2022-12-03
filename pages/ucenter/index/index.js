@@ -13,6 +13,17 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     status: {},
   },
+  /**
+   * 跳转到宠物档案
+   */
+  toPetFiles(){
+    let res = util.loginNow();
+    if (res == true) {
+      wx.navigateTo({
+        url: '/pages/ucenter/petFiles/index',
+      });
+    }
+  },
   goProfile: function (e) {
     let res = util.loginNow();
     if (res == true) {
@@ -75,7 +86,6 @@ Page({
     this.getOrderInfo();
     wx.removeStorageSync('categoryId');
   },
-
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading()
     this.getOrderInfo();

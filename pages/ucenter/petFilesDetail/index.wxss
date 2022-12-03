@@ -1,0 +1,32 @@
+page {
+  background: #f8f8f8;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  background: #f8f8f8;
+  min-height: 100%;
+  overflow-x: hidden;
+  padding-top: 88rpx;
+}
+.van-radio-group{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.mr20{
+  margin-right: 40rpx;
+}
+.submit-btn{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  bottom: 60rpx;
+}
+.submit-btn .btn{
+  width: 80%;
+}

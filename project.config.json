@@ -19,12 +19,19 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "useCompilerModule": false
+    "useCompilerModule": false,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ]
   },
   "compileType": "miniprogram",
   "libVersion": "2.9.4",
-  "appid": "wxe2411594dd0743f6",
-  "projectname": "%E6%B5%B7%E9%A3%8E%E5%B0%8F%E5%BA%97",
+  "appid": "wx361ad9ad1c2aa15a",
+  "projectname": "宠物小程序",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {},

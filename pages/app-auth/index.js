@@ -16,20 +16,19 @@ Page({
     };
   },
   // getUserInfo: function (e) {
-  //     app.globalData.userInfo = e.detail.userInfo
-  //     user.loginByWeixin().then(res => {
-  //         app.globalData.userInfo = res.data.userInfo;
-  //         app.globalData.token = res.data.token;
-  //         let is_new = res.data.is_new;//服务器返回的数据；
-  //         if (is_new == 0) {
-  //             util.showErrorToast('您已经是老用户啦！');
-  //             wx.navigateBack();
-  //         }
-  //         else if (is_new == 1) {
-  //             wx.navigateBack();
-  //         }
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   user.loginByWeixin().then(res => {
+  //     app.globalData.userInfo = res.data.userInfo;
+  //     app.globalData.token = res.data.token;
+  //     let is_new = res.data.is_new; //服务器返回的数据；
+  //     if (is_new == 0) {
+  //       util.showErrorToast('您已经是老用户啦！');
+  //       wx.navigateBack();
+  //     } else if (is_new == 1) {
+  //       wx.navigateBack();
+  //     }
 
-  //     }).catch((err) => { });
+  //   }).catch((err) => {});
   // },
 
   getUserProfile: function () {
@@ -55,13 +54,13 @@ Page({
           rawData: res.rawData,
           signature: res.signature
         };
-        console.log(loginParams);
+        console.log(loginParams)
         that.postLogin(loginParams);
       },
       // 失败回调
       fail: () => {
         // 弹出错误
-        App.showError('已拒绝小程序获取信息');
+        util.showErrorToast('已拒绝小程序获取信息');
       }
     });
   },
