@@ -41,7 +41,7 @@ Page({
   },
   toGoodsList: function (e) {
     wx.navigateTo({
-      url: '/pages/ucenter/goods-list/index?id=0',
+      url: '/pages/ucenter/goodsList/index?id=0',
     });
   },
   toSelectAddress: function () {

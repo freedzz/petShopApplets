@@ -4,19 +4,39 @@ const pay = require('../../../services/pay.js');
 const app = getApp()
 
 Page({
-  data: {},
+  data: {
+    petFileList: []
+  },
+  updatePetFiles(e){
+    let petFileId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/pages/ucenter/petFilesDetail/index?petFileId=${petFileId}`,
+    })
+  },
   addpetFiles(){
-    let res = util.loginNow();
-    if (res == true) {
-      wx.navigateTo({
-        url: '/pages/ucenter/petFilesDetail/index',
-      });
-    }
+    wx.navigateTo({
+      url: '/pages/ucenter/petFilesDetail/index',
+    });
   },
-  onLoad() {},
-  onShow() {},
-  switchTab(event) {
-    let showType = event.currentTarget.dataset.index;
+  getPetFileList(){
+    util.request(api.GetPetFileList)
+    .then((res) => {
+      if (res.errno === 0) {
+        this.setData({
+          petFileList: res.data
+        })
+      }
+    });
   },
-  onReachBottom: function () {}
+  onLoad() {
+    this.getPetFileList()
+  },
+  onShow() {
+    this.getPetFileList()
+  },
+  onPullDownRefresh(){
+    this.getPetFileList()
+  },
+  switchTab(event) {},
+  onReachBottom() {}
 })

@@ -1,18 +1,27 @@
 <view class="container">
-  <!-- <view class="header">
-    <span>完善宠物信息</span>
-    <span>帮助你科学的照顾宠物</span>
-  </view> -->
   <view class="content">
-    <van-field label="宠物姓名" model:value="{{petInfo.petName}}" placeholder="点击输入宠物名" />
-    <van-field label="宠物头像">
-      
-    </van-field>
-    <van-field label="宠物出生日期" model:value="{{petInfo.petBirthday}}" data-key="petBirthday" bind:click-input="handleShowDatetimePicker"></van-field>
-    <van-field label="宠物体重" type="number" model:value="{{petInfo.petWeight}}" placeholder="点击输入宠物体重" />
-    <van-field label="宠物性别" model:value="{{petInfo.petSex}}">
+    <van-field
+      label="宠物姓名"
+      required="true"
+      error="{{petNameError}}"
+      value="{{petInfo.petName}}"
+      data-key="petName"
+      bind:change="onChange"
+      placeholder="点击输入宠物名"
+    />
+    <van-field label="宠物头像"></van-field>
+    <van-field label="宠物体重"
+      type="digit"
+      required="true"
+      error="{{petWeightError}}"
+      value="{{petInfo.petWeight}}"
+      data-key="petWeight"
+      bind:change="onChange"
+      placeholder="点击输入宠物体重"
+    />
+    <van-field label="宠物性别">
       <tempalate slot="input">
-        <van-radio-group class="van-radio-group">
+        <van-radio-group class="van-radio-group" value="{{petInfo.petSex}}" data-key="petSex" bind:change="onChange">
           <van-radio class="mr20" name="1">男</van-radio>
           <van-radio name="2">女</van-radio>
         </van-radio-group>
@@ -20,13 +29,14 @@
     </van-field>
     <van-field label="是否绝育">
       <tempalate slot="input">
-        <van-radio-group class="van-radio-group" model:value="{{petInfo.isSterilization}}">
+        <van-radio-group class="van-radio-group" value="{{petInfo.isSterilization}}" data-key="isSterilization" bind:change="onChange">
           <van-radio class="mr20" name="1">是</van-radio>
           <van-radio name="2">否</van-radio>
         </van-radio-group>
       </tempalate>
     </van-field>
-    <van-field label="疫苗注射时间" model:value="{{petInfo.vaccineTime}}" data-key="vaccineTime" bind:click-input="handleShowDatetimePicker"></van-field>
+    <van-field label="宠物出生日期" value="{{petInfo.petBirthday}}" data-key="petBirthday" bind:click-input="handleShowDatetimePicker"></van-field>
+    <van-field label="疫苗注射时间" value="{{petInfo.vaccineTime}}" data-key="vaccineTime" bind:click-input="handleShowDatetimePicker"></van-field>
     <van-action-sheet
       show="{{ showDatetimePicker }}"
       title="选择日期"
@@ -39,11 +49,8 @@
       />
     </van-action-sheet>
     <view class="submit-btn">
-      <van-button
-        class="btn"
-        type="info"
-        customStyle="width: 100%"
-        bind:click="submitForm">提交</van-button>
+      <van-button class="btn" type="info" customStyle="width: 100%" bind:click="submitForm">提交</van-button>
+      <van-button class="btn" wx:if="{{petFileId}}" customStyle="width: 100%" bind:click="deletePetFile">删除</van-button>
     </view>
   </view>
 </view>

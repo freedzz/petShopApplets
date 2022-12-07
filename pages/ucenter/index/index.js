@@ -38,7 +38,7 @@ Page({
       let showType = event.currentTarget.dataset.index;
       wx.setStorageSync('showType', showType);
       wx.navigateTo({
-        url: '/pages/ucenter/order-list/index?showType=' + showType,
+        url: '/pages/ucenter/orderList/index?showType=' + showType,
       });
     }
   },
@@ -65,7 +65,7 @@ Page({
   },
   goAuth: function (e) {
     wx.navigateTo({
-      url: '/pages/app-auth/index',
+      url: '/pages/appAuth/index',
     });
   },
   onLoad: function (options) {},

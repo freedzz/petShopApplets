@@ -1,14 +1,15 @@
 <view class="container">
-  <view class="pet-files-wrap">
-    <view class="pet-files-item">
+  <view class="pet-files-wrap" wx:if="{{petFileList.length}}">
+    <view class="pet-files-item" wx:for="{{petFileList}}" wx:key="id" data-id="{{item.id}}" bindtap="updatePetFiles">
       <view class="item-left"></view>
       <view class="item-right">
-        <view>宠物姓名：test</view>
-        <view>宠物性别：男</view>
-        <view>宠物出生日期：2022-12-01</view>
+        <view>宠物姓名：{{item.petName}}</view>
+        <view>宠物性别：{{item.petSex === '1' ? '男' : '女'}}</view>
+        <view>宠物出生日期：{{item.petBirthday}}</view>
       </view>
     </view>
   </view>
+  <van-empty wx:if="{{!petFileList.length}}" description="暂无数据" />
   <view class="submit-btn">
     <van-button
       class="btn"

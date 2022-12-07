@@ -226,7 +226,7 @@ Page({
       return false;
     }
     wx.navigateTo({
-      url: '/pages/order-check/index?addtype=0'
+      url: '/pages/orderCheck/index?addtype=0'
     })
   },
   selectTap: function (e) {

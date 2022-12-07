@@ -519,7 +519,7 @@ Page({
           if (_res.errno == 0) {
             let id = that.data.id;
             wx.navigateTo({
-              url: '/pages/order-check/index?addtype=1'
+              url: '/pages/orderCheck/index?addtype=1'
             });
           } else {
             wx.showToast({

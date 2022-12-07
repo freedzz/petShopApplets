@@ -1,6 +1,6 @@
 // const ApiRootUrl = 'http://localhost:8360/api/';
 const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-// const ApiRootUrl = 'https://www.guxiaoling.com:8466/api/';
+// const ApiRootUrl = 'http://api.freedzz.com:8360/api/';
 
 module.exports = {
   // 登录
@@ -53,5 +53,9 @@ module.exports = {
   SaveSettings: ApiRootUrl + 'settings/save',
   SettingsDetail: ApiRootUrl + 'settings/userDetail',
   GetBase64: ApiRootUrl + 'qrcode/getBase64', //获取商品详情二维码
-
+  // 宠物档案
+  getPetFileDetail: ApiRootUrl + 'petFile/petFileDetail',
+  DeletePetFile: ApiRootUrl + 'petFile/deletePetFile',
+  SavePetFile: ApiRootUrl + 'petFile/savePetFile',
+  GetPetFileList: ApiRootUrl + 'petFile/getPetFileList'
 };

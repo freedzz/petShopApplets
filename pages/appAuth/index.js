@@ -33,7 +33,7 @@ Page({
 
   getUserProfile: function () {
     // wx.navigateTo({
-    //     url: '/pages/app-auth/index',
+    //     url: '/pages/appAuth/index',
     // });
     let that = this;
     let code = '';

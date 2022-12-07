@@ -27,7 +27,7 @@ Page({
   reOrderAgain: function () {
     let orderId = this.data.orderId
     wx.redirectTo({
-      url: '/pages/order-check/index?addtype=2&orderFrom=' + orderId
+      url: '/pages/orderCheck/index?addtype=2&orderFrom=' + orderId
     })
   },
   copyText: function (e) {
@@ -44,13 +44,13 @@ Page({
   toGoodsList: function (e) {
     let orderId = this.data.orderId;
     wx.navigateTo({
-      url: '/pages/ucenter/goods-list/index?id=' + orderId,
+      url: '/pages/ucenter/goodsList/index?id=' + orderId,
     });
   },
   toExpressInfo: function (e) {
     let orderId = this.data.orderId;
     wx.navigateTo({
-      url: '/pages/ucenter/express-info/index?id=' + orderId,
+      url: '/pages/ucenter/expressInfo/index?id=' + orderId,
     });
   },
   toRefundSelect: function (e) {

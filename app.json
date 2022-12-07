@@ -1,22 +1,22 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/app-auth/index",
+    "pages/appAuth/index",
     "pages/category/index",
     "pages/cart/cart",
     "pages/share/index",
     "pages/search/search",
-    "pages/order-check/index",
+    "pages/orderCheck/index",
     "pages/goods/goods",
     "pages/ucenter/about/index",
     "pages/ucenter/address/index",
-    "pages/ucenter/address-detail/index",
+    "pages/ucenter/addressDetail/index",
     "pages/ucenter/index/index",
     "pages/ucenter/settings/index",
-    "pages/ucenter/order-list/index",
-    "pages/ucenter/goods-list/index",
-    "pages/ucenter/order-details/index",
-    "pages/ucenter/express-info/index",
+    "pages/ucenter/orderList/index",
+    "pages/ucenter/goodsList/index",
+    "pages/ucenter/orderDetails/index",
+    "pages/ucenter/expressInfo/index",
     "pages/ucenter/footprint/index",
     "pages/ucenter/petFiles/index",
     "pages/ucenter/petFilesDetail/index",
@@ -68,6 +68,8 @@
     "van-radio": "@vant/weapp/radio/index",
     "van-radio-group": "@vant/weapp/radio-group/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

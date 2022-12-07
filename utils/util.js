@@ -242,7 +242,7 @@ function loginNow() {
   let userInfo = wx.getStorageSync('userInfo');
   if (userInfo == '') {
     wx.navigateTo({
-      url: '/pages/app-auth/index',
+      url: '/pages/appAuth/index',
     });
     return false;
   } else {

@@ -3,9 +3,10 @@ var api = require('../../../config/api.js');
 const pay = require('../../../services/pay.js');
 const moment = require('../../../utils/moment.js')
 const app = getApp()
-// 触底上拉刷新 TODO 这里要将page传给服务器，作者没写
+
 Page({
   data: {
+    petFileId: '',
     petInfo: {
       petType: 1,
       petName: '',
@@ -17,7 +18,21 @@ Page({
       vaccineTime: moment().format('YYYY-MM-DD')
     },
     showDatetimePicker: false,
-    selectedKey: ''
+    selectedKey: '',
+    petNameError: false,
+    petWeightError: false
+  },
+  onChange(event){
+    let value = event.detail
+    let key = event && event.target && event.target.dataset ? event.target.dataset.key : ''
+    let petInfo = this.data.petInfo
+    petInfo[key] = value
+    this.setData({
+      petInfo: petInfo,
+      petWeightError: false,
+      petNameError: false
+    })
+    
   },
   submitDatetimePicker(value){
     let petInfo = this.data.petInfo;
@@ -40,13 +55,86 @@ Page({
       showDatetimePicker: false
     });
   },
+  /**
+   * 保存宠物信息
+   */
   submitForm(){
-    console.log(this.data.petInfo)
+    if(!this.data.petInfo.petName){
+      this.setData({
+        petNameError: true
+      })
+      return
+    }
+    if(!this.data.petInfo.petWeight){
+      this.setData({
+        petWeightError: true
+      })
+      return
+    }
+    util.request(api.SavePetFile, {
+      id: this.data.petFileId,
+      ...this.data.petInfo
+    }, 'POST').then((res) => {
+      if (res.errno === 0) {
+        wx.showToast({
+          title: this.data.petFileId ? '更新成功' : '新增成功',
+          duration: 500,
+          complete: () => {
+            setTimeout(()=>{
+              wx.navigateBack()
+            }, 500)
+          }
+        })
+      }
+    });
   },
-  onLoad: function () {},
-  onShow: function () {},
-  switchTab: function (event) {
-    let showType = event.currentTarget.dataset.index;
+  /**
+   * 删除宠物档案
+   */
+  deletePetFile(){
+    util.request(api.DeletePetFile, {
+      id: this.data.petFileId,
+    }).then((res) => {
+      if (res.errno === 0) {
+        wx.showToast({
+          title: '删除成功',
+          duration: 500,
+          complete: () => {
+            setTimeout(()=>{
+              wx.navigateBack()
+            }, 500)
+          }
+        })
+      }
+    });
   },
-  onReachBottom: function () {}
+  /**
+   * 根据id获取宠物信息
+   */
+  getPetFileDetail: function () {
+    util.request(api.getPetFileDetail, {
+      id: this.data.petFileId
+    }).then((res) => {
+      if (res.errno === 0) {
+        this.setData({
+          petInfo: res.data
+        })
+      }
+    });
+    wx.hideLoading();
+  },
+  onLoad(options) {
+    if(options.petFileId){
+      wx.showLoading({
+        title: '加载中...',
+      })
+      this.setData({
+        petFileId: options.petFileId || ''
+      })
+      this.getPetFileDetail()
+    }
+  },
+  onShow() {},
+  switchTab() {},
+  onReachBottom() {}
 })

@@ -11,7 +11,7 @@ Page({
   goAddressDetail: function (e) {
     let id = e.currentTarget.dataset.addressid;
     wx.navigateTo({
-      url: '/pages/ucenter/address-detail/index?id=' + id,
+      url: '/pages/ucenter/addressDetail/index?id=' + id,
     })
   },
   getAddresses() {
@@ -51,7 +51,7 @@ Page({
   },
   addAddress: function () {
     wx.navigateTo({
-      url: '/pages/ucenter/address-detail/index?id=' + 0,
+      url: '/pages/ucenter/addressDetail/index?id=' + 0,
     })
   },
   onPullDownRefresh: function () {
