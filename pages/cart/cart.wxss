@@ -39,7 +39,9 @@ page {
 
 .to-index-btn {
   color: #fff;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  /* background: linear-gradient(to right, #ff3456, #ff347d); */
+  background-color: #40AE36;
+  border-color: #40AE36;
   border-radius: 10rpx;
   width: 400rpx;
   height: 90rpx;
@@ -151,7 +153,7 @@ page {
 .price-now {
   display: inline-block;
   font-size: 28rpx;
-  color: #ff3456;
+  color: #F55726;
   margin-right: 10rpx;
 }
 
@@ -281,7 +283,8 @@ button::after {
   margin: 0;
   text-align: center;
   line-height: 42rpx;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  /* background: linear-gradient(to right, #ff3456, #ff347d); */
+  background-color: #40AE36;
   border-radius: 46rpx;
   box-sizing: border-box;
   font-weight: bold;
@@ -307,7 +310,7 @@ button::after {
 }
 
 .a-goods .delete-btn {
-  background-color: #ff3456;
+  background-color: #F55726;
   width: 90px;
   height: 240rpx;
   text-align: center;
@@ -346,7 +349,8 @@ button::after {
   width: 300rpx;
   text-align: center;
   line-height: 100rpx;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  /* background: linear-gradient(to right, #ff3456, #ff347d); */
+  background: linear-gradient(to right, #4ce03e, #40AE36);
   font-size: 32rpx;
   color: #fff;
 }
@@ -379,7 +383,7 @@ button::after {
 }
 
 .settle-box .total {
-  color: #ff3456;
+  color: #F55726;
   float: left;
   margin-left: 20rpx;
 }

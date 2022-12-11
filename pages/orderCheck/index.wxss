@@ -108,8 +108,8 @@ page {
 
 .show-address .name-tel .default-address {
   font-size: 22rpx;
-  color: #ff3456;
-  background: #faedef;
+  color: #40AE36;
+  background: rgb(64 174 54 / 0.2);
   text-align: center;
   padding: 2rpx 10rpx;
   border-radius: 4rpx;
@@ -214,7 +214,7 @@ page {
 }
 
 .color-red {
-  color: #b42519;
+  color: #F55726;
 }
 
 .right-arrow .right-tag {
@@ -228,8 +228,8 @@ page {
   display: inline-block;
   padding: 4rpx 6rpx;
   background: #fff;
-  color: #b42519;
-  border: 1rpx solid #b42519;
+  color: #F55726;
+  border: 1rpx solid #F55726;
   border-radius: 8rpx;
   height: 30rpx;
   line-height: 30rpx;
@@ -274,7 +274,7 @@ page {
 
 .price-to-pay {
   font-size: 30rpx;
-  color: #ff3456;
+  color: #F55726;
   font-weight: bold;
   margin-left: 6rpx;
 }
@@ -335,7 +335,8 @@ page {
   text-align: center;
   height: 100%;
   line-height: 100rpx;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  /* background: linear-gradient(to right, #ff3456, #ff347d); */
+  background: linear-gradient(to right, #4ce03e, #40AE36);
   font-size: 32rpx;
   color: #fff;
   border-radius: 0;

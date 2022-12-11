@@ -1,14 +1,16 @@
 <view class="container" wx:if="{{loading == 1}}">
-  <view class='contact-wrap' wx:if="{{showContact == 1}}">
-    <button class="contact-btn" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
-      <image class='icon' src='/images/icon/contact.png'></image>
-      <view class='text'>客服</view>
+  <!-- 搜索栏 -->
+  <view class="search-wrap">
+    <view class="search" bindtap="goSearch">
+      <image class="icon" src="/images/icon/search.png"></image>
+      <text class="txt">搜索,发现更多好物</text>
+    </view>
+    <button class="message-wrap contact-btn" wx:if="{{showContact == 1}}" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
+      <image class='icon' src='/images/icon/message.png'></image>
+      <view class='text '>客服</view>
     </button>
   </view>
-  <view class="search" bindtap="goSearch">
-    <image class="icon" src="/images/icon/search.png"></image>
-    <text class="txt">搜索,发现更多好物</text>
-  </view>
+  <!-- 滚动栏 -->
   <view class='banner-wrap' wx:if="{{show_banner && banner.length > 0}}">
     <swiper class="banner" indicator-dots="true" autoplay="{{autoplay}}" interval="3000" duration="1000">
       <swiper-item wx:for="{{banner}}" wx:key="id">
@@ -21,16 +23,14 @@
       </swiper-item>
     </swiper>
   </view>
+  <!-- 分类菜单 -->
   <view class='marquee_box' wx:if="{{notice.length>0 && show_notice == 1}}">
     <swiper vertical="{{true}}" class="notice-swiper" indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="2000" duration="1000">
       <swiper-item wx:for="{{notice}}" wx:key="id" class='notice-wrap'>
-
         <view class="icon">
-          <image src="/images/icon/notice-icon.png" class='img'>
-          </image>
+          <image src="/images/icon/notice-icon.png" class='img'></image>
         </view>
         <view class='notice-text'>{{item.content}}</view>
-
       </swiper-item>
     </swiper>
   </view>
@@ -100,6 +100,6 @@
   <view class="no-more-goods ">没有更多商品啦</view>
 </view>
 <view class="loading" style="height:{{sysHeight}}px" wx:else>
-  <image class="img" src="/images/icon/loading.gif"></image>
-  <view class="text">海风吹啊吹</view>
+  <image class="img" src="/images/icon/loading.png"></image>
+  <view class="text">加载中...</view>
 </view>

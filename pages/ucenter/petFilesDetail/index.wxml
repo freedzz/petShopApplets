@@ -6,19 +6,33 @@
       error="{{petNameError}}"
       value="{{petInfo.petName}}"
       data-key="petName"
+      maxlength="15"
       bind:change="onChange"
       placeholder="点击输入宠物名"
     />
-    <van-field label="宠物头像"></van-field>
+    <van-cell title="宠物头像" title-width="180rpx" class="custom-van-cell">
+        <van-uploader
+          maxCount="1"
+          accept="image"
+          fileList="{{ fileList }}"
+          bind:after-read="afterRead"
+          bind:delete="deleteIcon"
+        />
+    </van-cell>
     <van-field label="宠物体重"
-      type="digit"
+      type="number"
       required="true"
+      maxlength="6"
       error="{{petWeightError}}"
       value="{{petInfo.petWeight}}"
       data-key="petWeight"
       bind:change="onChange"
       placeholder="点击输入宠物体重"
-    />
+    >
+      <tempalate slot="button">
+        kg
+      </tempalate>
+    </van-field>
     <van-field label="宠物性别">
       <tempalate slot="input">
         <van-radio-group class="van-radio-group" value="{{petInfo.petSex}}" data-key="petSex" bind:change="onChange">
@@ -26,6 +40,7 @@
           <van-radio name="2">女</van-radio>
         </van-radio-group>
       </tempalate>
+      
     </van-field>
     <van-field label="是否绝育">
       <tempalate slot="input">
@@ -49,7 +64,7 @@
       />
     </van-action-sheet>
     <view class="submit-btn">
-      <van-button class="btn" type="info" customStyle="width: 100%" bind:click="submitForm">提交</van-button>
+      <van-button class="btn add-btn" type="info" customStyle="width: 100%" bind:click="submitForm">提交</van-button>
       <van-button class="btn" wx:if="{{petFileId}}" customStyle="width: 100%" bind:click="deletePetFile">删除</van-button>
     </view>
   </view>

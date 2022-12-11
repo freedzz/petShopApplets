@@ -23,12 +23,6 @@ page {
   align-items: center;
 }
 
-.a-item .icon {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 20rpx;
-}
-
 .a-input {
   font-size: 28rpx;
   width: 100%;
@@ -53,7 +47,7 @@ page {
 }
 
 .active {
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  background: linear-gradient(to right, #4ce03e, #40AE36);
   box-shadow: 0rpx 10rpx 20rpx #f1f1f1;
   color: #fff;
 }

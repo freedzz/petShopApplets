@@ -10,6 +10,9 @@ page {
   overflow-x: hidden;
   padding-top: 88rpx;
 }
+.custom-van-cell .van-cell__value{
+  text-align: left;
+}
 .van-radio-group{
   display: flex;
   justify-content: space-around;
@@ -31,4 +34,12 @@ page {
 .submit-btn .btn{
   width: 60%;
   margin: 10px 0;
+}
+.add-btn button{
+  background-color: #40AE36;
+  border-color: #40AE36;
+}
+.van-radio .van-radio__icon--checked{
+  background-color: #40AE36;
+  border-color: #40AE36;
 }

@@ -17,6 +17,7 @@ page {
 }
 .pet-files-item{
   display: flex;
+  justify-content: space-around;
   width: calc(100% - 40rpx);
   height: auto;
   padding: 20rpx;
@@ -24,15 +25,24 @@ page {
   border-radius: 20rpx;
 }
 .item-left{
-  width: 30%;
-  height: auto;
+  width: 80px;
+  height: 80px; 
+  border-radius: 50%;
 }
+
+.item-left .img{
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  border-radius: 50%;
+}
+
 .item-right{
   width: 70%;
   height: auto;
-  color: #9E9E9E;
+  color: rgba(153, 153, 153, 1);
   font-size: 14px;
-  line-height: 18px;
+  line-height: 22px;
 }
 
 .submit-btn{
@@ -45,4 +55,8 @@ page {
 }
 .submit-btn .btn{
   width: 80%;
+}
+.submit-btn .btn button{
+  background-color: #40AE36;
+  border-color: #40AE36;
 }

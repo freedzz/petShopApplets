@@ -25,14 +25,14 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#6e6d6b",
-    "selectedColor": "#ff3456",
+    "selectedColor": "#40AE36",
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [{
@@ -70,6 +70,9 @@
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
     "van-empty": "@vant/weapp/empty/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

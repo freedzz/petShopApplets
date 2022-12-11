@@ -67,7 +67,8 @@ page {
 
 .to-order-btn {
   color: #fff;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  /* background: linear-gradient(to right, #ff3456, #ff347d); */
+  background-color: #40AE36;
   border-radius: 0px;
   width: 300rpx;
   height: 80rpx;
@@ -92,7 +93,7 @@ page {
 }
 
 .p .time {
-  color: #ff3456;
+  color: #F55726;
 }
 
 .contact-wrap {

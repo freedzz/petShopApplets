@@ -20,7 +20,8 @@ Page({
     showDatetimePicker: false,
     selectedKey: '',
     petNameError: false,
-    petWeightError: false
+    petWeightError: false,
+    fileList: []
   },
   onChange(event){
     let value = event.detail
@@ -117,14 +118,64 @@ Page({
     }).then((res) => {
       if (res.errno === 0) {
         this.setData({
-          petInfo: res.data
+          petInfo: res.data,
+          fileList: [{
+            url: res.data.petIcon,
+            isImage: true
+          }]
         })
       }
     });
     wx.hideLoading();
   },
+  deleteIcon(){
+    let petInfo = this.data.petInfo
+    petInfo.petIcon = ''
+    this.setData({
+      petInfo: petInfo,
+      fileList: []
+    })
+  },
+  afterRead(event){
+    const { file } = event.detail
+    const fileName = moment().format('YYYYMMDDHHmmssSSS') + Math.floor(Math.random() * 100) + 'petIcon'
+    // 获取token
+    util.request(api.qiniuToken, {}, 'post')
+    .then((res) => {
+      if (res.errno === 0) {
+        // 上传文件
+        const { token, url } = res.data
+        wx.uploadFile({
+          url: api.qiniu,
+          filePath: file.thumb,
+          name: 'file',
+          formData: {
+            'token': token,
+            'key': fileName
+          },
+          success: (res) => {
+            if(res.statusCode === 200){
+              const resData = JSON.parse(res.data)
+              let petInfo = this.data.petInfo
+              petInfo.petIcon = url + resData.key
+              this.setData({
+                petInfo: petInfo,
+                fileList: [{
+                  url: url + resData.key,
+                  isImage: true
+                }]
+              })
+            }
+          }
+        })
+      }
+    })
+  },
   onLoad(options) {
     if(options.petFileId){
+      wx.setNavigationBarTitle({
+        title:"修改宠物信息"
+      })
       wx.showLoading({
         title: '加载中...',
       })
@@ -132,6 +183,10 @@ Page({
         petFileId: options.petFileId || ''
       })
       this.getPetFileDetail()
+    } else {
+      wx.setNavigationBarTitle({
+        title:"新增宠物信息"
+      })
     }
   },
   onShow() {},

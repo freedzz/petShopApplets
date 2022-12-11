@@ -70,7 +70,7 @@ page {
 }
 
 .catalog .nav .item.active {
-  color: #ff3456;
+  color: #40AE36;
   font-size: 32rpx;
   font-weight: 500;
 }
@@ -87,7 +87,7 @@ page {
   padding-bottom: 100rpx;
   text-align: center;
   font-size: 26rpx;
-  color: #52a9e2;
+  color: #999999;
 }
 
 .catalog .cate .no-more {
@@ -264,7 +264,7 @@ page {
 .goods-box .navi-url .box .new-tag {
   height: 36rpx;
   width: 60rpx;
-  background: #ca2a1d;
+  background: #F55726;
   position: absolute;
   top: 20rpx;
   left: 0;
@@ -324,7 +324,7 @@ page {
 .goods-box .navi-url .goods-info .price-container .l .h {
   font-size: 28rpx;
   font-weight: 500;
-  color: #ff3456;
+  color: #F55726;
 }
 
 .goods-box .navi-url .goods-info .price-container .l .b {
@@ -335,7 +335,7 @@ page {
 
 .goods-box .navi-url .goods-info .price-container .l .no-level {
   font-size: 26rpx;
-  color: #e00000;
+  color: #F55726;
 }
 
 .goods-box .navi-url .goods-info .price-container .l .b .price-w {

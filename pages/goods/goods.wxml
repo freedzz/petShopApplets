@@ -170,6 +170,6 @@
   </view>
 </view>
 <view class="loading" style="height:{{sysHeight}}px" wx:else>
-  <image class="img" src="/images/icon/loading.gif"></image>
-  <view class="text">海风吹啊吹</view>
+  <image class="img" src="/images/icon/loading.png"></image>
+  <view class="text">加载中...</view>
 </view>

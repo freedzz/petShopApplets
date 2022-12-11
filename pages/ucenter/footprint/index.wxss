@@ -169,7 +169,8 @@ page {
 
 .to-index-btn {
   color: #fff;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  background-color: #40AE36;
+  border-color: #40AE36;
   border-radius: 10rpx;
   width: 300rpx;
   height: 90rpx;
@@ -294,12 +295,12 @@ page {
 
 .goods-info .price-container .l .no-level {
   font-size: 26rpx;
-  color: #e00000;
+  color: #F55726;
 }
 
 .goods-info .price-container .l .b .price-t {
   font-size: 28rpx;
-  color: #e00000;
+  color: #F55726;
   margin-right: 6rpx;
 }
 

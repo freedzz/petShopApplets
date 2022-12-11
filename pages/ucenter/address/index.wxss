@@ -102,8 +102,8 @@ page {
 
 .has-info .info-item .info-wrap .name .default {
   font-size: 22rpx;
-  color: #ff3456;
-  background: #faedef;
+  color: #40AE36;
+  background: rgb(64 174 54 / 0.2);
   text-align: center;
   padding: 2rpx 10rpx;
   border-radius: 4rpx;
@@ -214,10 +214,10 @@ page {
 
 .btn-wrap .btn {
   width: 100%;
-  background: linear-gradient(to right, #ff3456, #ff347d);
+  background: #40AE36;
   color: #fff;
   font-size: 28rpx;
   text-align: center;
-  height: 110rpx;
+  height: 100rpx;
   line-height: 100rpx;
 }

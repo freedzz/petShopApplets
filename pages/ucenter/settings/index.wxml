@@ -1,11 +1,11 @@
 <view class="container">
   <view class='edit-container'>
     <view class="a-item">
-      <image class="icon" src="/images/icon/receiver.png"></image>
+      <van-icon name="user-o" style="margin-right: 10rpx;" />
       <input class='a-input' bindblur="bindinputName" placeholder='真实姓名' value="{{name}}"></input>
     </view>
     <view class="a-item">
-      <image class="icon" src="/images/icon/mobile.png"></image>
+      <van-icon name="phone-circle-o" style="margin-right: 10rpx;" />
       <input class='a-input' bindblur="mobilechange" value="{{mobile}}" placeholder='手机号码'></input>
     </view>
   </view>

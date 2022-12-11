@@ -19,9 +19,6 @@
     <view class="to-index-btn" bindtap="toIndexPage">
       马上去逛逛
     </view>
-    <!-- <view class="to-index-btn" bindtap="test">
-            马上去逛逛
-        </view>  -->
   </view>
   <view wx:else class="wrap">
     <!--  待付款  -->

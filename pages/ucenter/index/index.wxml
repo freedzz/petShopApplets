@@ -1,5 +1,8 @@
 <view class="container">
+  <!-- 背景 -->
+  <view class="bg-wrap"></view>
   <view class="userinfo">
+    <!-- 暂未登录 -->
     <view class='head-wrap' wx:if="{{hasUserInfo == 0}}" bindtap='goAuth'>
       <view class="no-login-avatar">
         <view class='no-avatar'>
@@ -8,7 +11,8 @@
         <view class='btn-login'>点我登录</view>
       </view>
     </view>
-    <view class='head-wrap' wx:else bindtap='goProfile'>
+    <!-- 登录 -->
+    <view class='head-wrap' wx:else>
       <view class="head-l">
         <view class='l'>
           <image class='avatar' src="{{userInfo.avatar}}"></image>
@@ -20,11 +24,15 @@
         </view>
       </view>
       <view class="head-r">
-        <view class="arrow"></view>
+        <van-icon name="setting-o" bindtap='goProfile' />
+        <button class="contact-btn" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
+          <van-icon name="service-o" />
+        </button>
       </view>
     </view>
   </view>
   <!-- <ad unit-id="adunit-89ae0a0b6860dc9f" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad> -->
+  <!-- 我的订单 -->
   <view class="order-container">
     <view class='header' data-index='0' bindtap='toOrderListTap'>
       <view class='top-title'>
@@ -32,85 +40,61 @@
         <view class='text'>我的订单</view>
       </view>
       <view class='see-more'>
-        <view class="text">查看全部订单</view>
+        <view class="text">全部订单</view>
         <view class="arrow"></view>
       </view>
     </view>
     <view class='btn-container'>
       <view class='icon-wrap' data-index='1' bindtap='toOrderListTap'>
         <view class='order-icon-wrap'>
-          <image class='order-icon' src='/images/icon/icon-pay-r.png'>
-          </image>
+          <image class='order-icon' src='/images/icon/icon-pay-r.png'></image>
           <view wx:if="{{status.toPay > 0 }}" class='red-point'>{{status.toPay}}</view>
         </view>
         <text class='order-txt'>待付款</text>
       </view>
       <view class='icon-wrap' data-index='2' bindtap='toOrderListTap'>
         <view class='order-icon-wrap'>
-          <image class='order-icon' src='/images/icon/icon-delivery-r.png'>
-          </image>
+          <image class='order-icon' src='/images/icon/icon-delivery-r.png'></image>
           <view wx:if="{{status.toDelivery > 0 }}" class='red-point'>{{status.toDelivery}}</view>
         </view>
         <text class='order-txt'>待发货</text>
       </view>
       <view class='icon-wrap' data-index='3' bindtap='toOrderListTap'>
         <view class='order-icon-wrap'>
-          <image class='order-icon' src='/images/icon/icon-onroad-r.png'>
-          </image>
+          <image class='order-icon' src='/images/icon/icon-onroad-r.png'></image>
           <view wx:if="{{status.toReceive > 0 }}" class='red-point'>{{status.toReceive}}</view>
         </view>
         <text class='order-txt'>待收货</text>
       </view>
     </view>
   </view>
-  <view class="li-wrap">
-    <view class="list" bindtap="toAddressList">
-      <view class="list-l">
-        <view class="icon">
-          <image class="img" src="/images/icon/icon-address-r.png"></image>
-        </view>
-        <view class="text">地址管理</view>
-      </view>
-      <view class="arrow"></view>
+  <!-- 我的服务 -->
+  <view class="my-server-wrap">
+    <view class="my-server-title">
+      <view class='left-line'></view>
+      我的服务
     </view>
-  </view>
-  <view class="li-wrap">
-    <!-- 宠物档案 -->
-    <view class="list" bindtap="toPetFiles">
-      <view class="list-l">
-        <view class="icon">
-          <image class="img" src="/images/icon/icon-footprint-r.png"></image>
-        </view>
-        <view class="text">宠物档案</view>
+    <view class="my-server-content">
+      <view class="my-server" bindtap="toAddressList">
+        <image class="img" src="/images/icon/icon-address-r.png"></image>
+        <view class="title">收货地址</view>
       </view>
-      <view class="arrow"></view>
-    </view>
-    <view class="list" bindtap="toFootprint">
-      <view class="list-l">
-        <view class="icon">
-          <image class="img" src="/images/icon/icon-footprint-r.png"></image>
-        </view>
-        <view class="text">我的足迹</view>
+      <view class="my-server" bindtap="toPetFiles">
+        <image class="img" src="/images/icon/petFile.png"></image>
+        <view class="title">宠物档案</view>
       </view>
-      <view class="arrow"></view>
-    </view>
-    <button class="contact-btn" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
-      <view class="list-l">
-        <view class="icon">
-          <image class="img" src="/images/icon/icon-service-r.png"></image>
-        </view>
-        <view class="text">联系客服</view>
+      <view class="my-server" bindtap="toFootprint">
+        <image class="img" src="/images/icon/icon-footprint-r.png"></image>
+        <view class="title">我的足迹</view>
       </view>
-      <view class="arrow"></view>
-    </button>
-    <view class="list" bindtap="toAbout">
-      <view class="list-l">
-        <view class="icon">
-          <image class="img" src="/images/icon/icon-about-r.png"></image>
-        </view>
-        <view class="text">关于我们</view>
+      <button class="my-server contact-btn" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
+        <image class="img" src="/images/icon/icon-service-r.png"></image>
+        <view class="title">在线客服</view>
+      </button>
+      <view class="my-server" bindtap="toAbout">
+        <image class="img" src="/images/icon/icon-about-r.png"></image>
+        <view class="title">关于我们</view>
       </view>
-      <view class="arrow"></view>
     </view>
   </view>
   <view class="company">
