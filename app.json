@@ -8,6 +8,8 @@
     "pages/search/search",
     "pages/orderCheck/index",
     "pages/goods/goods",
+    "pages/payResult/payResult",
+    "pages/payOffline/index",
     "pages/ucenter/about/index",
     "pages/ucenter/address/index",
     "pages/ucenter/addressDetail/index",
@@ -20,8 +22,8 @@
     "pages/ucenter/footprint/index",
     "pages/ucenter/petFiles/index",
     "pages/ucenter/petFilesDetail/index",
-    "pages/payResult/payResult",
-    "pages/payOffline/index"
+    "pages/ucenter/myWallet/index",
+    "pages/ucenter/vip/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -73,6 +75,7 @@
     "van-toast": "@vant/weapp/toast/index",
     "van-uploader": "@vant/weapp/uploader/index",
     "van-cell": "@vant/weapp/cell/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

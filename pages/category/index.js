@@ -1,6 +1,9 @@
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
 
+//获取应用实例
+const app = getApp()
+
 Page({
   data: {
     navList: [],
@@ -17,8 +20,19 @@ Page({
     showNoMore: 0,
     loading: 0,
     index_banner_img: 0,
+    isVipUser: ''
   },
-  onLoad: function (options) {},
+  async getUserExtInfo() {
+    let res = await util.request(api.getUserExtInfo, {}, 'get')
+    if (res.errno === 0) {
+      this.setData({
+        isVipUser: res.data.isVip
+      })
+    }
+  },
+  onLoad: function (options) {
+    this.getUserExtInfo()
+  },
   getChannelShowInfo: function (e) {
     let that = this;
     util.request(api.ShowSettings).then(function (res) {
@@ -86,6 +100,7 @@ Page({
     });
   },
   onShow: function () {
+    this.getUserExtInfo()
     this.getChannelShowInfo();
     let id = this.data.nowId;
     let nowId = wx.getStorageSync('categoryId');

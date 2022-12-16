@@ -395,3 +395,19 @@ page {
   height: 140rpx;
   width: 140rpx;
 }
+
+.discount-price-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row!important;
+}
+.discount-price-wrap .original-price{
+  font-size: 24rpx;
+  color: #999999;
+  text-decoration: line-through;
+}
+.discount-price-wrap .discount-price{
+  font-size: 26rpx;
+}

@@ -1,3 +1,4 @@
+<wxs module="filters" src="../../.././utils/fixed.wxs"></wxs>
 <view class="container">
   <view class='goods-list-container'>
     <view class='goods-list-wrap' hover-class='none' wx:for="{{goodsList}}" wx:key="id" wx:for-item="item">
@@ -12,7 +13,7 @@
           </view>
           <view class='info-bottom'>
             <view class='left'>
-              <view class='goods-price'>¥{{item.retail_price}}</view>
+              <view class='goods-price'>¥{{isVipUser ? filters.getDiscountPrice(item.retail_price) : item.retail_price}}</view>
               <view class='goods-num'>× {{item.number}}</view>
             </view>
           </view>

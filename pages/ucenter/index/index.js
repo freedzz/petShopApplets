@@ -13,6 +13,22 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     status: {},
   },
+  toVip(){
+    let res = util.loginNow();
+    if (res == true) {
+      wx.navigateTo({
+        url: '/pages/ucenter/vip/index',
+      });
+    }
+  },
+  toMyWallet(){
+    let res = util.loginNow();
+    if (res == true) {
+      wx.navigateTo({
+        url: '/pages/ucenter/myWallet/index',
+      });
+    }
+  },
   /**
    * 跳转到宠物档案
    */

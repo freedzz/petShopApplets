@@ -18,7 +18,8 @@ Page({
     isTouchMove: false,
     startX: 0, //开始坐标
     startY: 0,
-    hasCartGoods: 0
+    hasCartGoods: 0,
+    isVipUser: app.globalData.isVipUser
   },
   onLoad: function () {},
   onReady: function () {

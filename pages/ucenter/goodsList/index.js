@@ -6,8 +6,18 @@ const app = getApp()
 Page({
   data: {
     goodsList: [],
+    isVipUser: ''
+  },
+  async getUserExtInfo() {
+    let res = await util.request(api.getUserExtInfo, {}, 'get')
+    if (res.errno === 0) {
+      this.setData({
+        isVipUser: res.data.isVip
+      })
+    }
   },
   onLoad: function (options) {
+    this.getUserExtInfo()
     this.getGoodsList(options.id);
   },
   getGoodsList: function (id) {

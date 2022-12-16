@@ -1,3 +1,4 @@
+<wxs src="../../utils/fixed.wxs" module="filter"></wxs>
 <view class='container'>
   <view class="goodsList" wx:if="{{cartGoods.length > 0}}">
     <view class="a-goods {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{cartGoods}}" wx:key="id" bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">

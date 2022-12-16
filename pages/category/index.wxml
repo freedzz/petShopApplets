@@ -1,3 +1,4 @@
+<wxs src="../../utils/fixed.wxs" module="filter"></wxs>
 <view class="container">
   <view class="search">
     <navigator url="/pages/search/search" class="input">
@@ -36,8 +37,12 @@
                 <view class="goods-title">{{item.name}}</view>
                 <view class="goods-intro">{{item.goods_brief}}</view>
                 <view class='price-container'>
-                  <view class='l'>
+                  <view class='l' wx:if="{{!isVipUser}}">
                     <view class='h'>￥{{item.min_retail_price}}</view>
+                  </view>
+                  <view class='l discount-price-wrap' wx:else>
+                    <view class='original-price'>￥{{item.min_retail_price}}</view>
+                    <view class='discount-price h'>￥{{filter.getDiscountPrice(item.min_retail_price)}}</view>
                   </view>
                 </view>
               </view>

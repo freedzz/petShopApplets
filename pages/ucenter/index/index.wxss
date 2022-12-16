@@ -265,16 +265,21 @@ page {
 }
 .my-server-wrap .my-server-content{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  padding: 20rpx 0;
+  padding: 20rpx;
+}
+.my-server-content::after{
+  content: '';
+  flex: auto;
 }
 .my-server-content .my-server{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 .my-server .img{
   width: 50rpx;

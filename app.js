@@ -4,7 +4,15 @@ App({
   data: {
     deviceInfo: {}
   },
-  onLaunch: function () {
+  globalData: {
+    userInfo: {
+      nickname: '点我登录',
+      username: '点击登录',
+      avatar: 'http://lucky-icon.meiweiyuxian.com/hio/default_avatar_big.png'
+    },
+    token: ''
+  },
+  async onLaunch() {
     this.data.deviceInfo = wx.getSystemInfoSync();
     console.log(this.data.deviceInfo);
     // 展示本地存储能力
@@ -46,15 +54,5 @@ App({
         that.globalData.hh = hh;
       }
     });
-
-  },
-  globalData: {
-    userInfo: {
-      nickname: '点我登录',
-      username: '点击登录',
-      avatar: 'http://lucky-icon.meiweiyuxian.com/hio/default_avatar_big.png'
-    },
-    token: '',
   }
-
 })

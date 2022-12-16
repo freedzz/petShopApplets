@@ -1,0 +1,25 @@
+<view class="container">
+  <van-dialog id="van-dialog" />
+  <view class="my-wallet">
+    <view class="my-wallet-header">钱包余额</view>
+    <view class="my-wallet-num">{{userInfo.walletBalance}}</view>
+  </view>
+  <view class="my-vip">
+    <view class="my-vip-recharge" data-rechangeNum="300" bindtap="rechangeAccount">
+      <image class="img" src="/images/icon/vipActivity.png"></image>
+      <view class="recharge">
+        <view class="recharge-type">充值活动</view>
+        <view class="des">充值300起赠送25元，享受购买产品92折优惠价</view>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="my-vip-recharge" data-rechangeNum="500" bindtap="rechangeAccount">
+      <image class="img" src="/images/icon/vipActivity.png"></image>
+      <view class="recharge">
+        <view class="recharge-title">充值活动</view>
+        <view class="des">充值500赠送65元，享受购买产品88折优惠价</view>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>

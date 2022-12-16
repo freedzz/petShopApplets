@@ -28,7 +28,8 @@ Page({
     current: 0,
     showShareDialog: 0,
     userInfo: {},
-    autoplay: true
+    autoplay: true,
+    isVipUser: ''
   },
   hideDialog: function (e) {
     let that = this;
@@ -294,7 +295,16 @@ Page({
       }
     });
   },
+  async getUserExtInfo() {
+    let res = await util.request(api.getUserExtInfo, {}, 'get')
+    if (res.errno === 0) {
+      this.setData({
+        isVipUser: res.data.isVip
+      })
+    }
+  },
   onLoad: function (options) {
+    this.getUserExtInfo()
     let id = 0;
     var scene = decodeURIComponent(options.scene);
     if (scene != 'undefined') {
@@ -308,6 +318,7 @@ Page({
     });
   },
   onShow: function () {
+    this.getUserExtInfo()
     let userInfo = wx.getStorageSync('userInfo');
     let info = wx.getSystemInfoSync();
     let sysHeight = info.windowHeight - 100;

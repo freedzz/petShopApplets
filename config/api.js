@@ -40,7 +40,8 @@ module.exports = {
   SaveAddress: ApiRootUrl + 'address/saveAddress', //保存收货地址
   GetAddresses: ApiRootUrl + 'address/getAddresses',
   RegionList: ApiRootUrl + 'region/list', //获取区域列表
-  PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
+  // PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
+  PayPrepayId: ApiRootUrl + 'pay/preWeixinPaya', //获取微信统一下单prepay_id
   OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
   OrderList: ApiRootUrl + 'order/list', //订单列表
   OrderDetail: ApiRootUrl + 'order/detail', //订单详情
@@ -66,5 +67,9 @@ module.exports = {
   getPetFileDetail: ApiRootUrl + 'petFile/petFileDetail',
   DeletePetFile: ApiRootUrl + 'petFile/deletePetFile',
   SavePetFile: ApiRootUrl + 'petFile/savePetFile',
-  GetPetFileList: ApiRootUrl + 'petFile/getPetFileList'
+  GetPetFileList: ApiRootUrl + 'petFile/getPetFileList',
+  // vip充值 账户充值
+  getUserExtInfo: ApiRootUrl + 'userExt/getUserExtInfo',
+  updateUserWallet: ApiRootUrl + 'userExt/updateUserWallet',
+  updateUserVip: ApiRootUrl + 'userExt/updateUserVip'
 };

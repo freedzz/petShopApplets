@@ -38,10 +38,20 @@
     </view>
   </view>
   <view class='price-info'>
-    <view class="l">
+    <view class="l" wx:if="{{!isVipUser}}">
       <view class="now-price">
         <view class="sym">¥</view>
         <view class="num">{{goods.retail_price}}</view>
+      </view>
+    </view>
+    <view class="l discount-price-wrap" wx:else>
+      <view class="now-price original-price">
+        <view class="sym">¥</view>
+        <view class="num">{{goods.retail_price}}</view>
+      </view>
+      <view class="now-price discount-price">
+        <view class="sym">¥</view>
+        <view class="num">{{filters.getDiscountPrice(goods.retail_price)}}</view>
       </view>
     </view>
     <view class="r">
@@ -77,13 +87,21 @@
             <!-- todo 原价不等于0的时候要补充 -->
             <view class='retail-price'>
               <view class='p-title'>零售价：</view>
-              <view class='g-price'>{{goods.retail_price}}元</view>
+              <view class='g-price' wx:if="{{!isVipUser}}">{{goods.retail_price}}元</view>
+              <view class='g-price discount-price-wrap' wx:else>
+                <view class="original-price">{{goods.retail_price}}元</view>
+                <view class="discount-price">{{filters.getDiscountPrice(goods.retail_price)}}元</view>
+              </view>
             </view>
           </view>
           <view class='price-range' wx:elif="{{priceChecked == true}}">
             <view class='retail-price'>
               <view class='p-title'>零售价：</view>
-              <view class='g-price'>{{checkedSpecPrice}}元</view>
+              <view class='g-price' wx:if="{{!isVipUser}}">{{checkedSpecPrice}}元</view>
+              <view class='g-price discount-price-wrap' wx:else>
+                <view class="original-price">{{checkedSpecPrice}}元</view>
+                <view class="discount-price">{{filters.getDiscountPrice(checkedSpecPrice)}}元</view>
+              </view>
             </view>
           </view>
           <view class="a" wx:if="{{productList.length>0}}">{{tmpSpecText}}</view>

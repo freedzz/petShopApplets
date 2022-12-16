@@ -1,0 +1,17 @@
+<view class="container">
+  <van-dialog id="van-dialog" />
+  <view class="my-vip">
+    <view class="header">会员有效时间</view>
+    <view class="time">{{userInfo.vipStartTime}} - {{userInfo.vipEndTime}}</view>
+  </view>
+  <view class="my-vip">
+    <view class="my-vip-recharge" bindtap="rechangeVip">
+      <image class="img" src="/images/icon/vipRecharge.png"></image>
+      <view class="recharge">
+        <view class="recharge-type">购买月卡会员</view>
+        <view class="des">购买月卡16.8/月,享受购买产品95折优惠价</view>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>

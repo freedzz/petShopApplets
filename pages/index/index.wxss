@@ -485,3 +485,19 @@
   margin: 20rpx 0 30rpx 0;
   color: #999999;
 }
+
+.discount-price-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row!important;
+}
+.discount-price-wrap .original-price{
+  font-size: 24rpx;
+  color: #999999;
+  text-decoration: line-through;
+}
+.discount-price-wrap .discount-price{
+  font-size: 26rpx;
+}

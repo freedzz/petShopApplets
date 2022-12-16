@@ -87,6 +87,14 @@
         <image class="img" src="/images/icon/icon-footprint-r.png"></image>
         <view class="title">我的足迹</view>
       </view>
+      <view class="my-server" bindtap="toMyWallet">
+        <image class="img" src="/images/icon/myWallet.png"></image>
+        <view class="title">我的钱包</view>
+      </view>
+      <view class="my-server" bindtap="toVip">
+        <image class="img" src="/images/icon/vip.png"></image>
+        <view class="title">会员充值</view>
+      </view>
       <button class="my-server contact-btn" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
         <image class="img" src="/images/icon/icon-service-r.png"></image>
         <view class="title">在线客服</view>

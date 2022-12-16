@@ -20,6 +20,7 @@ Page({
     loading: 0,
     autoplay: true,
     showContact: 1,
+    isVipUser: ''
   },
   onPageScroll: function (e) {
     let scrollTop = e.scrollTop;
@@ -93,10 +94,20 @@ Page({
       }
     });
   },
+  async getUserExtInfo() {
+    let res = await util.request(api.getUserExtInfo, {}, 'get')
+    if (res.errno === 0) {
+      this.setData({
+        isVipUser: res.data.isVip
+      })
+    }
+  },
   onLoad: function (options) {
     this.getChannelShowInfo();
+    this.getUserExtInfo()
   },
   onShow: function () {
+    this.getUserExtInfo()
     this.getIndexData();
     var that = this;
     let userInfo = wx.getStorageSync('userInfo');
