@@ -2,6 +2,7 @@ var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
 const pay = require('../../services/pay.js');
 const app = getApp()
+import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
   data: {
@@ -15,7 +16,12 @@ Page({
     goodsCount: 0,
     postscript: '',
     outStock: 0,
-    payMethodItems: [{
+    payMethodItems: [
+      {
+        name: 'payWallet',
+        value: '余额支付'
+      },
+      {
         name: 'offline',
         value: '线下支付'
       },
@@ -26,6 +32,7 @@ Page({
       },
     ],
     payMethod: 1,
+    userInfo: {}
   },
   payChange(e) {
     let val = e.detail.value;
@@ -33,9 +40,13 @@ Page({
       this.setData({
         payMethod: 0
       })
-    } else {
+    } else if(val == 'online') {
       this.setData({
         payMethod: 1
+      })
+    } else if(val === 'payWallet'){
+      this.setData({
+        payMethod: 2
       })
     }
   },
@@ -73,6 +84,7 @@ Page({
         orderFrom: orderFrom
       })
     }
+    this.getUserExtInfo()
   },
   onUnload: function () {
     wx.removeStorageSync('addressId');
@@ -101,6 +113,7 @@ Page({
       this.setData({
         'addressId': addressId
       });
+      this.getUserExtInfo()
     } catch (e) {
       // Do something when catch error
     }
@@ -214,5 +227,64 @@ Page({
         })
       }
     });
-  }
+  },
+  walletOrder(){
+    if (this.data.addressId <= 0) {
+      util.showErrorToast('请选择收货地址');
+      return false;
+    }
+    let addressId = this.data.addressId;
+    let postscript = this.data.postscript;
+    let freightPrice = this.data.freightPrice;
+    let actualPrice = this.data.actualPrice;
+    if(this.data.userInfo.walletBalance < actualPrice){
+      util.showErrorToast(`支付失败，余额不足，钱包余额为${this.data.userInfo.walletBalance || 0}元`)
+      return
+    }
+    // 弹出支付弹窗
+    let message = `当前钱包余额为${this.data.userInfo.walletBalance || 0}元,确定支付${actualPrice}元购买商品？`
+    Dialog.confirm({
+      title: '确定',
+      message: message,
+    })
+    .then(async () => {
+      util.request(api.OrderSubmit, {
+        addressId: addressId,
+        postscript: postscript,
+        freightPrice: freightPrice,
+        actualPrice: actualPrice,
+        offlinePay: 2
+      }, 'POST').then(res => {
+        if (res.errno === 0) {
+          wx.removeStorageSync('orderId');
+          wx.setStorageSync('addressId', 0);
+          const orderId = res.data.orderInfo.id;
+          pay.payOrderWithWallet(parseInt(orderId))
+          .then(res => {
+            wx.redirectTo({
+              url: '/pages/payResult/payResult?status=1&orderId=' + orderId
+            });
+          }).catch(res => {
+            wx.redirectTo({
+              url: '/pages/payResult/payResult?status=0&orderId=' + orderId
+            });
+          });
+        } else {
+          util.showErrorToast(res.errmsg);
+        }
+      });
+    })
+    .catch(()=>{
+      console.log('取消支付')
+    })
+    
+  },
+  async getUserExtInfo(){
+    let res = await util.request(api.getUserExtInfo, {}, 'get')
+    if(res.errno ===0){
+      this.setData({
+        userInfo: res.data
+      })
+    }
+  },
 })

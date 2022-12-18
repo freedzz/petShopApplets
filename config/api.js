@@ -42,6 +42,7 @@ module.exports = {
   RegionList: ApiRootUrl + 'region/list', //获取区域列表
   // PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
   PayPrepayId: ApiRootUrl + 'pay/preWeixinPaya', //获取微信统一下单prepay_id
+  PayPreWallet: ApiRootUrl + 'pay/preWalletPay', // 使用钱包进行支付
   OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
   OrderList: ApiRootUrl + 'order/list', //订单列表
   OrderDetail: ApiRootUrl + 'order/detail', //订单详情

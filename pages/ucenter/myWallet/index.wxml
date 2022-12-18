@@ -2,7 +2,7 @@
   <van-dialog id="van-dialog" />
   <view class="my-wallet">
     <view class="my-wallet-header">钱包余额</view>
-    <view class="my-wallet-num">{{userInfo.walletBalance}}</view>
+    <view class="my-wallet-num">{{userInfo.walletBalance || 0}}</view>
   </view>
   <view class="my-vip">
     <view class="my-vip-recharge" data-rechangeNum="300" bindtap="rechangeAccount">

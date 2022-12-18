@@ -42,6 +42,22 @@ function payOrder(orderId) {
   });
 }
 /**
+ * 使用钱包进行支付
+ */
+function payOrderWithWallet(orderId){
+  return new Promise(function (resolve, reject) {
+    util.request(api.PayPreWallet, {
+      orderId: orderId
+    }).then((res) => {
+      if (res.errno === 0) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    });
+  });
+}
+/**
  * 充值vip
  */
 function payVip(orderId) {
@@ -83,5 +99,6 @@ function payVip(orderId) {
 }
 
 module.exports = {
-  payOrder
+  payOrder,
+  payOrderWithWallet
 };
