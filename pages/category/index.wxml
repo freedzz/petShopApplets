@@ -6,6 +6,114 @@
       <text class="txt">搜索, 共{{goodsCount}}款好味</text>
     </navigator>
   </view>
+  <view class="sort-wrap">
+    <view class="sort-box">
+      <view class="item {{currentSortType == 'default' ? 'active' : ''}}" bindtap="openSortFilter" id="defaultSort">
+        <view class="txt">综合</view>
+      </view>
+      <view class="item {{currentSortType == 'price' ? 'active' : ''}}" bindtap="openSortFilter" id="priceSort">
+        <view class="txt">价格</view>
+        <image class="icon" src="/images/icon/order-by.png" wx:if="{{currentSortType == 'default' || currentSortType == 'sales'}}"></image>
+        <block wx:else>
+          <image class="icon" wx:if="{{currentSortOrder == 'asc'}}" src='/images/icon/asc.png'></image>
+          <image class="icon" wx:elif="{{currentSortOrder == 'desc'}}" src='/images/icon/desc.png'></image>
+        </block>
+      </view>
+      <view class="item {{currentSortType == 'sales' ? 'active' : ''}}" bindtap="openSortFilter" id="salesSort">
+        <view class="txt">销量</view>
+        <image class="icon" src="/images/icon/order-by.png" wx:if="{{currentSortType == 'default' || currentSortType == 'price'}}"></image>
+        <block wx:else>
+          <image class="icon" wx:if="{{salesSortOrder == 'asc'}}" src='/images/icon/asc.png'></image>
+          <image class="icon" wx:elif="{{salesSortOrder == 'desc'}}" src='/images/icon/desc.png'></image>
+        </block>
+      </view>
+      <view class="item" bindtap="showSortPopup">
+        <view class="txt">筛选</view>
+        <block>
+          <image class="icon" src='/images/icon/sort.png'></image>
+        </block>
+      </view>
+    </view>
+    <!-- 高级搜索 -->
+    <van-popup show="{{ isShowSortPopup }}" position="right" bind:close="onCloseSortPopup">
+      <view class="more-sort-wrap">
+        <view class="more-sort-item">
+          <view class="sort-name">重量</view>
+          <view class="sort-type-wrap">
+            <view
+              class="sort-type {{item.isSelected ? 'active' : ''}}"
+              wx:for="{{universalEnum.weightList}}"
+              wx:for-index="index"
+              wx:for-item="item"
+              wx:key="value"
+              id="weightList-{{item.value}}"
+              bindtap="changeSearchParams"
+            >{{item.label}}</view>
+          </view>
+        </view>
+        <view class="more-sort-item">
+          <view class="sort-name">颗粒大小</view>
+          <view class="sort-type-wrap" >
+            <view
+              class="sort-type {{item.isSelected ? 'active' : ''}}"
+              wx:for="{{universalEnum.particleSizeList}}"
+              wx:for-index="index"
+              wx:for-item="item"
+              wx:key="value"
+              id="particleSizeList-{{item.value}}"
+              bindtap="changeSearchParams"
+            >{{item.label}}</view>
+          </view>
+        </view>
+        <view class="more-sort-item">
+          <view class="sort-name">年龄段</view>
+          <view class="sort-type-wrap">
+            <view
+              class="sort-type {{item.isSelected ? 'active' : ''}}"
+              wx:for="{{universalEnum.ageGroupList}}"
+              wx:for-index="index"
+              wx:for-item="item"
+              wx:key="value"
+              id="ageGroupList-{{item.value}}"
+              bindtap="changeSearchParams"
+            >{{item.label}}</view>
+          </view>
+        </view>
+        <view class="more-sort-item">
+          <view class="sort-name">犬型</view>
+          <view class="sort-type-wrap" >
+            <view
+              class="sort-type {{item.isSelected ? 'active' : ''}}"
+              wx:for="{{universalEnum.canineTypeList}}"
+              wx:for-index="index"
+              wx:for-item="item"
+              wx:key="value"
+              id="canineTypeList-{{item.value}}"
+              bindtap="changeSearchParams"
+            >{{item.label}}</view>
+          </view>
+        </view>
+        <view class="more-sort-item">
+          <view class="sort-name">配方</view>
+          <view class="sort-type-wrap">
+            <view
+              class="sort-type {{item.isSelected ? 'active' : ''}}"
+              wx:for="{{universalEnum.formulaList}}"
+              wx:for-index="index"
+              wx:for-item="item"
+              wx:key="value"
+              id="formulaList-{{item.value}}"
+              bindtap="changeSearchParams"
+            >{{item.label}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="btn">
+        <van-button type="primary" bindtap="searchParams">搜索</van-button>
+        <van-button bindtap="resetSearch">重置</van-button>
+      </view>
+    </van-popup>
+  </view>
   <view class="catalog">
     <scroll-view class="nav" scroll-y="true">
       <view class="item {{ nowId == 0 ?'active' : ''}}" bindtap="switchCate" data-id="0">全部</view>
@@ -54,8 +162,8 @@
       </block>
       <block wx:else>
         <view class="loading-wrap">
-          <image class="img" src="/images/icon/loading.gif"></image>
-          <view class="text">正在加载...</view>
+         <image class="img" src="/images/icon/loading.png"></image>
+         <view class="text">加载中...</view>
         </view>
       </block>
     </scroll-view>

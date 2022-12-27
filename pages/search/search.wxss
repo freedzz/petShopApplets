@@ -132,8 +132,8 @@ page {
 }
 
 .serach-keywords .item.active {
-  color: #ff3456;
-  border: 1px solid #ff3456;
+  color: #40AE36;
+  border: 1px solid #40AE36;
 }
 
 .shelper-list {
@@ -192,12 +192,13 @@ page {
 }
 
 .sort-box .item.active .txt {
-  color: #ff3456;
+  color: #40AE36;
 }
 
 .sort-box .item .icon {
-  width: 15rpx;
-  height: 21rpx;
+  width: 40rpx;
+  height: 40rpx;
+  object-fit: scale-down;
 }
 
 .sort-box-category {
@@ -223,8 +224,8 @@ page {
 }
 
 .sort-box-category .item.active {
-  color: #ff3456;
-  border: 1px solid #ff3456;
+  color: #40AE36;
+  border: 1px solid #40AE36;
 }
 
 .cate-item {
@@ -333,7 +334,7 @@ page {
 .goods-box .navi-url .box .new-tag {
   height: 36rpx;
   width: 60rpx;
-  background: #ca2a1d;
+  background: #F55726;
   position: absolute;
   top: 20rpx;
   left: 0;
@@ -398,49 +399,8 @@ page {
 
 .goods-box .navi-url .goods-info .price-container .l .h {
   font-size: 26rpx;
-  color: #ff3456;
+  color: #F55726;
   font-weight: 500;
-}
-
-.goods-box .navi-url .goods-info .price-container .l .b {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.goods-box .navi-url .goods-info .price-container .l .no-level {
-  font-size: 28rpx;
-  color: #e00000;
-}
-
-.goods-box .navi-url .goods-info .price-container .l .b .price-w {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.goods-box .navi-url .goods-info .price-container .l .b .price-t {
-  font-size: 26rpx;
-  color: #e00000;
-  margin-right: 6rpx;
-}
-
-.goods-box .navi-url .goods-info .price-container .l .b .price-tag {
-  border: 1rpx solid #e00000;
-  color: #e00000;
-  background: #ffeaea;
-  border-radius: 100rpx;
-  padding: 0 6rpx;
-  font-size: 14rpx;
-  text-align: center;
-  line-height: 22rpx;
-  height: 22rpx;
-}
-
-.goods-box .navi-url .goods-info .price-container .retail-price {
-  font-size: 18rpx;
-  color: #000;
-  margin-bottom: 4rpx;
 }
 
 .no-goods-mask {
@@ -467,4 +427,20 @@ page {
 .soldout {
   height: 180rpx;
   width: 180rpx;
+}
+
+.discount-price-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row!important;
+}
+.discount-price-wrap .original-price{
+  font-size: 24rpx;
+  color: #999999;
+  text-decoration: line-through;
+}
+.discount-price-wrap .discount-price{
+  font-size: 26rpx;
 }

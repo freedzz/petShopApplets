@@ -1,6 +1,6 @@
 // const ApiRootUrl = 'http://localhost:8360/api/';
-const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-// const ApiRootUrl = 'http://api.freedzz.com:8360/api/';
+// const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+const ApiRootUrl = 'http://api.freedzz.com:8360/api/';
 
 module.exports = {
   qiniuToken: ApiRootUrl + 'index/getQiniuToken',
@@ -72,5 +72,7 @@ module.exports = {
   // vip充值 账户充值
   getUserExtInfo: ApiRootUrl + 'userExt/getUserExtInfo',
   updateUserWallet: ApiRootUrl + 'userExt/updateUserWallet',
-  updateUserVip: ApiRootUrl + 'userExt/updateUserVip'
+  updateUserVip: ApiRootUrl + 'userExt/updateUserVip',
+  // 获取高级搜索枚举
+  getUniversalEnum: ApiRootUrl + 'universalEnum/getUniversalEnum'
 };

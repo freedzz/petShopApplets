@@ -17,6 +17,7 @@ Page({
     currentSortOrder: 'desc',
     salesSortOrder: 'desc',
     categoryId: 0,
+    isVipUser: ''
   },
   //事件处理函数
   closeSearch: function () {
@@ -30,6 +31,15 @@ Page({
   },
   onLoad: function () {
     this.getSearchKeyword();
+    this.getUserExtInfo()
+  },
+  async getUserExtInfo() {
+    let res = await util.request(api.getUserExtInfo, {}, 'get')
+    if (res.errno === 0) {
+      this.setData({
+        isVipUser: res.data.isVip
+      })
+    }
   },
   getSearchKeyword() {
     let that = this;

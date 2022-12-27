@@ -51,8 +51,8 @@ page {
   background: #fff;
   display: flex;
   border-top: 1px solid #fafafa;
-  /* position: fixed; */
-  margin-top: 90rpx;
+  /* margin-top: 90rpx; */
+  margin-top: 170rpx;
 }
 
 .catalog .nav {
@@ -396,6 +396,7 @@ page {
   width: 140rpx;
 }
 
+/* 打折 */
 .discount-price-wrap{
   width: 100%;
   display: flex;
@@ -410,4 +411,102 @@ page {
 }
 .discount-price-wrap .discount-price{
   font-size: 26rpx;
+}
+
+/* 排序 */
+.sort-wrap {
+  position: fixed;
+  top: 91rpx;
+  background: #fff;
+  width: 100%;
+  height: 78rpx;
+  z-index: 999;
+}
+
+.sort-wrap .sort-box {
+  background: #fff;
+  width: 100%;
+  height: 78rpx;
+  overflow: hidden;
+  padding: 0 30rpx;
+  display: flex;
+  border-bottom: 1px solid #fafafa;
+  box-sizing: border-box;
+}
+
+.sort-wrap .sort-box .item {
+  height: 78rpx;
+  line-height: 78rpx;
+  flex: 1;
+  color: #333;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-wrap .sort-box .item .txt {
+  display: block;
+  height: 100%;
+  /* margin-right: 8rpx; */
+  color: #333;
+}
+
+.sort-wrap .sort-box .item.active .txt {
+  color: #40AE36;
+}
+
+.sort-wrap .sort-box .item .icon {
+  width: 40rpx;
+  height: 40rpx;
+  object-fit: scale-down;
+}
+
+/* 高级搜索 */
+.van-popup{
+  width: 80vw;
+  height: 100%;
+  overflow-y: auto;
+}
+.more-sort-wrap{
+  box-sizing: border-box;
+  width: 100%;
+  height: 90%;
+  padding: 20rpx 30rpx;
+}
+.more-sort-item .sort-name{
+  font-size: 32rpx;
+  line-height: 40rpx;
+  font-weight: 400;
+  padding: 20rpx 0;
+}
+.more-sort-item .sort-type-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.sort-type-wrap .sort-type{
+  font-size: 28rpx;
+  line-height: 34rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 24rpx;
+  color: #000;
+  background-color: #F8F9FA;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.sort-type-wrap .active{
+  color: #40AE36;
+  border: 1px solid #40AE36;
+}
+.van-popup .btn{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 40rpx 0;
+}
+.van-popup .btn button{
+  width: 260rpx;
+  border-radius: 20rpx;
 }
