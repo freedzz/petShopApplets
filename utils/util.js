@@ -1,5 +1,3 @@
-// import qs from 'qs'
-
 var api = require('../config/api.js');
 
 function formatTime(date) {
@@ -203,41 +201,6 @@ function showSuccessToast(msg) {
   })
 }
 
-function sentRes(url, data, method, fn) {
-  // data = data || null;
-  // if (data == null) {
-  //   var content = qs.stringify(data);
-  // } else {
-  //   var content = JSON.stringify(data); //json format
-  // }
-
-  // var parse_u = require('url').parse(url, true);
-  // // var parse_u = new URL(url)
-  // var isHttp = parse_u.protocol == 'http:';
-  // var options = {
-  //   host: parse_u.hostname,
-  //   port: parse_u.port || (isHttp ? 80 : 443),
-  //   path: parse_u.path,
-  //   method: method,
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Content-Length': Buffer.byteLength(content, "utf8"),
-  //     'Trackingmore-Api-Key': '1b70c67e-d191-4301-9c05-a50436a2526d'
-  //   }
-  // };
-  // var req = require(isHttp ? 'http' : 'https').request(options, function (res) {
-  //   var _data = '';
-  //   res.on('data', function (chunk) {
-  //     _data += chunk;
-  //   });
-  //   res.on('end', function () {
-  //     fn != undefined && fn(_data);
-  //   });
-  // });
-  // req.write(content);
-  // req.end();
-}
-
 function loginNow() {
   let userInfo = wx.getStorageSync('userInfo');
   if (userInfo == '') {
@@ -368,7 +331,6 @@ module.exports = {
   login,
   getUserInfo,
   testMobile,
-  sentRes,
   loginNow,
   getTextLength,
   transferBorder,

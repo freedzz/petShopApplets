@@ -1,6 +1,7 @@
 // const ApiRootUrl = 'http://localhost:8360/api/';
 // const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-const ApiRootUrl = 'http://api.freedzz.com:8360/api/';
+const ApiRootUrl = 'https://www.freedzz.com/api/';
+// const ApiRootUrl = 'http://121.4.107.80:8360/api/'
 
 module.exports = {
   qiniuToken: ApiRootUrl + 'index/getQiniuToken',
@@ -40,9 +41,10 @@ module.exports = {
   SaveAddress: ApiRootUrl + 'address/saveAddress', //保存收货地址
   GetAddresses: ApiRootUrl + 'address/getAddresses',
   RegionList: ApiRootUrl + 'region/list', //获取区域列表
-  // PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
-  PayPrepayId: ApiRootUrl + 'pay/preWeixinPaya', //获取微信统一下单prepay_id
+  PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
   PayPreWallet: ApiRootUrl + 'pay/preWalletPay', // 使用钱包进行支付
+  reChargeWeixin: ApiRootUrl + 'pay/reChargeWeixin', // vip充值/余额充值
+  
   OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
   OrderList: ApiRootUrl + 'order/list', //订单列表
   OrderDetail: ApiRootUrl + 'order/detail', //订单详情

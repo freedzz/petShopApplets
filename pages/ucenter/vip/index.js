@@ -1,5 +1,7 @@
-var util = require('../../../utils/util.js');
-var api = require('../../../config/api.js');
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
+const pay = require('../../../services/pay.js');
+
 import Dialog from '@vant/weapp/dialog/dialog';
 const app = getApp()
 
@@ -28,14 +30,21 @@ Page({
       message: message,
     })
     .then(async () => {
-      let res = await util.request(api.updateUserVip, {
-        id: this.data.userInfo.id
-      }, 'post')
-      if (res.errno === 0) {
-        console.log('充值vip成功')
-        util.showSuccessToast('充值vip成功')
-        this.getUserExtInfo()
-      }
+      // 调用充值方法进行充值
+      pay.reChargeWeixin(16.8, 1)
+      .then(async () => {
+        let res = await util.request(api.updateUserVip, {
+          id: this.data.userInfo.id
+        }, 'post')
+        if (res.errno === 0) {
+          console.log('充值vip成功')
+          util.showSuccessToast('充值vip成功')
+          this.getUserExtInfo()
+        }
+      })
+      .catch(err => {
+        util.showErrorToast(err && err.errmsg ? err.errmsg : '充值vip失败')
+      });
     })
     .catch(()=>{
       console.log('取消充值')

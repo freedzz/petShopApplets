@@ -107,7 +107,7 @@
   </view>
   <view class="company">
     <view class="c-wrap" bindtap="getOrderInfo">
-      <view class="text">宠物小程序</view>
+      <view class="text">壹品佳宠</view>
       <view class="line"></view>
     </view>
     <view class="tip">微信小程序商城</view>

@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "全部产品"
+  "navigationBarTitleText": "全部产品",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-popup": "@vant/weapp/popup/index"
+  }
 }

@@ -35,12 +35,19 @@ Component({
     isPainting: false
   },
   ctx: null,
+  canvasObj: null,
   cache: {},
   ready() {
     // console.log('ready');
     wx.removeStorageSync('canvasdrawer_pic_cache')
     this.cache = wx.getStorageSync('canvasdrawer_pic_cache') || {}
-    this.ctx = wx.createCanvasContext('canvasdrawer', this)
+    // this.ctx = wx.createCanvasContext('canvasdrawer', this)
+    setTimeout(()=>{
+      wx.createSelectorQuery().in(this).select('#canvasdrawer').fields({ node: true, size: true }).exec((res)=>{
+        this.canvasObj = res[0].node
+        this.ctx = this.canvasObj.getContext('2d')
+      })
+    }, 1000)
   },
   methods: {
     readyPigment() {
@@ -56,7 +63,7 @@ Component({
       const inter = setInterval(() => {
         if (this.ctx) {
           clearInterval(inter)
-          this.ctx.clearActions()
+          // this.ctx.clearActions()
           this.ctx.save()
           this.getImagesInfo(views)
         }
@@ -126,19 +133,30 @@ Component({
         }
       }
       // console.log('????????为什么');
-      this.ctx.draw(false, () => {
-        // console.log(this.cache);
-        wx.setStorageSync('canvasdrawer_pic_cache', this.cache)
-        const system = wx.getSystemInfoSync().system
-        if (/ios/i.test(system)) {
+      // this.ctx.fillStyle = "#10131c";
+      // this.ctx.draw(true, () => {
+      //   // console.log(this.cache);
+      //   wx.setStorageSync('canvasdrawer_pic_cache', this.cache)
+      //   const system = wx.getSystemInfoSync().system
+      //   if (/ios/i.test(system)) {
+      //     this.saveImageToLocal()
+      //   } else {
+      //     // 延迟保存图片，解决安卓生成图片错位bug。
+      //     setTimeout(() => {
+      //       this.saveImageToLocal()
+      //     }, 800)
+      //   }
+      // })
+      wx.setStorageSync('canvasdrawer_pic_cache', this.cache)
+      const system = wx.getSystemInfoSync().system
+      if (/ios/i.test(system)) {
+        this.saveImageToLocal()
+      } else {
+        // 延迟保存图片，解决安卓生成图片错位bug。
+        setTimeout(() => {
           this.saveImageToLocal()
-        } else {
-          // 延迟保存图片，解决安卓生成图片错位bug。
-          setTimeout(() => {
-            this.saveImageToLocal()
-          }, 800)
-        }
-      })
+        }, 800)
+      }
     },
     drawImage(params) {
       // console.log('drawImage');
@@ -158,12 +176,16 @@ Component({
       //   this.ctx.clip()
       //   this.ctx.drawImage(url, left, top, width, height)
       // } else {
+      let image = this.canvasObj.createImage()
+      image.src = url
       if (deg !== 0) {
         this.ctx.translate(left + width / 2, top + height / 2)
         this.ctx.rotate(deg * Math.PI / 180)
-        this.ctx.drawImage(url, -width / 2, -height / 2, width, height)
+        // this.ctx.drawImage(url, -width / 2, -height / 2, width, height)
+        this.ctx.drawImage(image, -width / 2, -height / 2, width, height)
       } else {
-        this.ctx.drawImage(url, left, top, width, height)
+        // this.ctx.drawImage(url, left, top, width, height)
+        this.ctx.drawImage(image, left, top, width, height)
       }
       // }
       this.ctx.restore()
@@ -188,10 +210,10 @@ Component({
       } = params
 
       this.ctx.beginPath()
-      this.ctx.setTextBaseline('top')
-      this.ctx.setTextAlign(textAlign)
-      this.ctx.setFillStyle(color)
-      this.ctx.setFontSize(fontSize)
+      this.ctx.textBaseline = 'top'
+      this.ctx.textAlign = textAlign
+      this.ctx.fillStyle = color
+      this.ctx.font = fontSize
 
       if (!breakWord) {
         this.ctx.fillText(content, left, top)
@@ -261,7 +283,7 @@ Component({
         width = 0,
         height = 0
       } = params
-      this.ctx.setFillStyle(background)
+      this.ctx.fillStyle = background
       this.ctx.fillRect(left, top, width, height)
       this.ctx.restore()
     },
@@ -305,7 +327,8 @@ Component({
         y: 0,
         width,
         height,
-        canvasId: 'canvasdrawer',
+        // canvasId: 'canvasdrawer',
+        canvas: this.canvasObj,
         complete: res => {
           if (res.errMsg === 'canvasToTempFilePath:ok') {
             this.setData({

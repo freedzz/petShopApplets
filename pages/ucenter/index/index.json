@@ -3,5 +3,8 @@
   "navigationBarBackgroundColor": "#40AE36",
   "navigationBarTitleText": "个人中心",
   "navigationBarTextStyle": "white",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
 }

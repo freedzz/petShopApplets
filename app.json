@@ -64,19 +64,5 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-radio": "@vant/weapp/radio/index",
-    "van-radio-group": "@vant/weapp/radio-group/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-empty": "@vant/weapp/empty/index",
-    "van-toast": "@vant/weapp/toast/index",
-    "van-uploader": "@vant/weapp/uploader/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-popup": "@vant/weapp/popup/index"
-  }
+  "lazyCodeLoading": "requiredComponents"
 }

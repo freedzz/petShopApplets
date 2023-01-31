@@ -1,6 +1,9 @@
-var util = require('../../../utils/util.js');
-var api = require('../../../config/api.js');
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
+const pay = require('../../../services/pay.js');
+
 import Dialog from '@vant/weapp/dialog/dialog';
+
 const app = getApp()
 const rechargeObj = {
   300: 325,
@@ -33,15 +36,22 @@ Page({
       message: message,
     })
     .then(async () => {
-      let res = await util.request(api.updateUserWallet, {
-        rechargeAmount: rechargeObj[rechangenum],
-        id: this.data.userInfo.id
-      }, 'post')
-      if(res.errno ===0){
-        console.log(`充值${rechargeObj[rechangenum]}元成功`)
-        util.showSuccessToast(`充值${rechargeObj[rechangenum]}元成功`)
-        this.getUserExtInfo()
-      }
+      // 调用充值方法进行充值
+      pay.reChargeWeixin(rechangenum, 2)
+      .then(async () => {
+        let res = await util.request(api.updateUserWallet, {
+          rechargeAmount: rechargeObj[rechangenum],
+          id: this.data.userInfo.id
+        }, 'post')
+        if(res.errno ===0){
+          console.log(`充值${rechargeObj[rechangenum]}元成功`)
+          util.showSuccessToast(`充值${rechargeObj[rechangenum]}元成功`)
+          this.getUserExtInfo()
+        }
+      })
+      .catch(err => {
+        util.showErrorToast(err && err.errmsg ? err.errmsg : '充值vip失败')
+      });
     })
     .catch(()=>{
       console.log('取消充值')
